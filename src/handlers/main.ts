@@ -77,8 +77,8 @@ const main = Composer.on(['text', 'sticker'], async ctx => {
     id = bot.botInfo?.id,
     idUser = userIdVerify(replyToMsg)
 
-  if (replyToMsg && idUser != id) addReply(ctx)
-  if (!replyToMsg || idUser == id) answerUser(ctx, ctx)
+    if (replyToMsg && idUser != id && ctx.chat.type != 'private') addReply(ctx)
+  if (!replyToMsg || idUser == id && ctx.chat.type != 'private') answerUser(ctx, ctx)
 
 })
 
